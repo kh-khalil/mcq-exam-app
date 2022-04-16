@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Result from '../Result/Result';
 import Question from './Question';
-import { examQuestionsWithAnswers } from './QuestionsArray'
+import { examQuestionsWithAnswers } from '../Data/QuestionsArray'
 
 const Exam = () => {
    const [questionNumber, setQuestionNumber] = useState(0)
