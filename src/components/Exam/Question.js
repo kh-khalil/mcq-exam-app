@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from "yup";
+import './Question.css';
 
 const Question = ({
    questionAndAnswer,
@@ -33,10 +34,10 @@ const Question = ({
             handleChange
          } = props;
          return (
-            <form className='form pa4 br3 shadow-5 w-70 center' onSubmit={handleSubmit}>
-               <fieldset id="favorite_movies" className="bn">
+            <form className='form pa4 br3 shadow-5 w-70 w-50-l center' onSubmit={handleSubmit}>
+               <fieldset className="bn">
                   <legend className="fw7 mb2">{questionAndAnswer.question}</legend>
-                  <div className="flex items-center mb2 custom-control">
+                  <div id="question_answers" className="flex items-center mb2 custom-control">
                      {questionAndAnswer.answers.map((answer, key) => (
                         <label key={key} className="lh-copy mr3 custom-control-label">
                            <input

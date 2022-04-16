@@ -1,0 +1,14 @@
+@media (max-width: 610px) {
+   .text {
+      font-size: 16px;
+   }
+
+   #question_answers {
+      flex-direction: column;
+      float: left;
+   }
+
+   #question_answers label {
+      width: 100%;
+   }
+}
