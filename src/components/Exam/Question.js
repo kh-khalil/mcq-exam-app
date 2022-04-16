@@ -1,80 +1,22 @@
-// import React from 'react';
-// import { Formik } from 'formik';
-// import * as Yup from "yup";
-
-// const Question = ({ questionAndAnswer, onRouteChange, questionsArrayLength, goToNextQuestion }) => (
-//    <Formik
-//       initialValues={{ questionAnswer: "" }}
-//       onSubmit={(values, { setSubmitting }) => {
-//          console.log("go to next????", values);
-//          setSubmitting(false);
-//          goToNextQuestion(true)
-//       }}
-//       validationSchema={Yup.object().shape({
-//          questionAnswer: Yup.string()
-//             .required("This field is required!")
-//       })}
-//    >
-//       {props => {
-//          const {
-//             values,
-//             touched,
-//             errors,
-//             isSubmitting,
-//             handleChange,
-//             handleBlur,
-//             handleSubmit
-//          } = props;
-//          return (
-//             <form className='form pa4 br3 shadow-5 w-70 center'>
-//                <fieldset id="favorite_movies" className="bn">
-//                   <legend className="fw7 mb2">{questionAndAnswer.question}</legend>
-//                   <div className="flex items-center mb2">
-//                      {questionAndAnswer.answers.map((answer, key) => (
-//                         <label htmlFor={key + answer} key={key} className="lh-copy mr3">
-//                            <input
-//                               className="mr2"
-//                               type="radio"
-//                               name="questionAnswer"
-//                               id={key + answer}
-//                               value={values.questionAnswer}
-//                               onChange={handleChange}
-//                               onBlur={handleBlur}
-//                            />
-//                            {answer}
-//                         </label>
-//                      ))}
-//                   </div>
-//                   {errors.questionAnswer && touched.questionAnswer && (
-//                      <div className="input-feedback">{errors.questionAnswer}</div>
-//                   )}
-//                </fieldset>
-//                <button className="center db" type="submit" disabled={isSubmitting || values.questionAnswer === ""}>
-//                   Next
-//                </button>
-//             </form>
-//          );
-//       }}
-//    </Formik>
-
-// )
-
-// export default Question;
-
-
-
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from "yup";
 
-const Question = ({ questionAndAnswer, questionsArrayLength, goToNextQuestion }) => (
+const Question = ({
+   questionAndAnswer,
+   goToNextQuestion,
+   getValue,
+}) => (
+
    <Formik
       initialValues={{ questionAnswer: "" }}
 
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { setSubmitting, resetForm }) => {
          console.log("values:", values);
+         getValue(values)
          setSubmitting(false);
-         goToNextQuestion(true)
+         goToNextQuestion(true);
+         resetForm({});
       }}
       validationSchema={Yup.object().shape({
          questionAnswer: Yup.string()
@@ -91,7 +33,7 @@ const Question = ({ questionAndAnswer, questionsArrayLength, goToNextQuestion })
             handleChange
          } = props;
          return (
-            <Form className='form pa4 br3 shadow-5 w-70 center' onSubmit={handleSubmit}>
+            <form className='form pa4 br3 shadow-5 w-70 center' onSubmit={handleSubmit}>
                <fieldset id="favorite_movies" className="bn">
                   <legend className="fw7 mb2">{questionAndAnswer.question}</legend>
                   <div className="flex items-center mb2 custom-control">
@@ -103,7 +45,7 @@ const Question = ({ questionAndAnswer, questionsArrayLength, goToNextQuestion })
                               name="questionAnswer"
                               value={answer}
                               onChange={handleChange}
-                              defaultChecked={values.questionAnswer === answer}
+                           // defaultChecked={values.questionAnswer === answer}
                            />
                            {answer}
                         </label>
@@ -116,7 +58,7 @@ const Question = ({ questionAndAnswer, questionsArrayLength, goToNextQuestion })
                <button className="center db" type="submit" disabled={isSubmitting}>
                   Next
                </button>
-            </Form>
+            </form>
          );
       }}
    </Formik>
@@ -124,3 +66,34 @@ const Question = ({ questionAndAnswer, questionsArrayLength, goToNextQuestion })
 )
 
 export default Question;
+
+// import React from 'react';
+// import { Formik } from 'formik';
+// import * as Yup from "yup";
+
+// const Question = ({ questionAndAnswer, questionsArrayLength, onSelectingAnswer }) => {
+
+//    return (
+//       <div className='form pa4 br3 shadow-5 w-70 center'>
+//          <fieldset id="favorite_movies" className="bn">
+//             <legend className="fw7 mb2">{questionAndAnswer.question}</legend>
+//             <div className="flex items-center mb2 custom-control">
+//                {questionAndAnswer.answers.map((answer, key) => (
+//                   <label key={key} className="lh-copy mr3 custom-control-label">
+//                      <input
+//                         className="mr2"
+//                         type="radio"
+//                         name="questionAnswer"
+//                         value={answer}
+//                         onChange={onSelectingAnswer}
+//                      />
+//                      {answer}
+//                   </label>
+//                ))}
+//             </div>
+//          </fieldset>
+//       </div>
+//    );
+// }
+
+// export default Question;
