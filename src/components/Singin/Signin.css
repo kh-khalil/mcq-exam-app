@@ -194,18 +194,6 @@
    cursor: pointer;
 }
 
-form {
-   /* max-width: 500px; */
-   /* width: 100%; */
-   /* margin: 0 auto; */
-}
-
-label,
-input {
-   /* display: block; */
-   /* width: 100%; */
-}
-
 label {
    margin-bottom: 0.25rem;
    float: left;
