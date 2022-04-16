@@ -1,5 +1,4 @@
 import { Formik } from 'formik';
-import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
 import React from 'react';
 import './Signin.css'
@@ -12,11 +11,11 @@ const Signin = ({ onRouteChange }) => (
             console.log("Logging in", values);
             setSubmitting(false);
             onRouteChange('home')
-         }, 500);
+         }, 750);
       }}
       validationSchema={Yup.object().shape({
          name: Yup.string()
-            .min(3, "Name should be atleast 3 charachters!")
+            .min(3, "Name should be at least 3 charachters!")
             .required("This field is required!"),
          email: Yup.string()
             .email()
