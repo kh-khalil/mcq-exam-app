@@ -102,7 +102,7 @@ const Signin = ({ onRouteChange }) => (
                            )}
                         </div>
 
-                        <button className="center db" type="submit" disabled={isSubmitting}>
+                        <button className="center grow db" type="submit" disabled={isSubmitting}>
                            Login
                         </button>
                      </fieldset>
